@@ -1,0 +1,33 @@
+'''sort(),sorted()'''
+'''
+sort()方法支持原地排序，而内置函数sorted()返回新的列表，并不对原列表进行任何修改。
+sorted()方法可以对列表、元组、字典、range对象等进行排序。
+列表的sort()方法和内置函数sorted()都支持key参数实现复杂排序要求。
+'''
+'''
+list.sort(key=None, reverse=False)	
+对列表list中的元素进行排序，key用来指定排序依据，reverse决定升序（False）还是降序（True）
+'''
+persons = [{'name': 'B', 'age': 37}, {'name': 'Z', 'age': 40}, {'name': 'L', 'age': 50},{'name': 'B', 'age': 43}]
+#使用key来指定排序依据，先按姓名升序排序，姓名相同的按年龄降序排序
+print(sorted(persons,key=lambda x:(x['name'],-x['age'])))
+print(persons)#原列表无修改
+persons.sort(key=lambda x:(x['name'],-x['age']))
+print(persons)#原列表被修改
+'''正则表达式'''
+'''
+正则表达式对象的match(string[, pos[, endpos]])方法用于在字符串开头或指定位置进行搜索，
+模式必须出现在字符串开头或指定位置；
+正则表达式对象的search(string[, pos[, endpos]])方法用于在整个字符串中进行搜索；
+'''
+import re
+example = 'ShanDong Institute of Business and Technology'
+pattern = re.compile(r'\b[a-zA-Z]{3}\b')    # 查找3个字母长的单词
+print(pattern.match(example))                    #从字符串开头开始匹配，失败返回空值
+print(pattern.search(example))                   #在整个字符串中搜索，成功
+'''lambda表达式'''
+'''lambda表达式可以用来声明匿名函数，也就是没有函数名字的临时使用的小函数，
+尤其适合需要一个函数作为另一个函数参数的场合。
+lambda表达式只可以包含一个表达式，该表达式的计算结果可以看作是函数的返回值，
+不允许包含其他复杂的语句，但在表达式中可以调用其他函数。
+'''
